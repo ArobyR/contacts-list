@@ -1,18 +1,9 @@
 import React from "react";
 
-const FormularioAdd = ({ estado, dispatch }) => {
-  const actionAdd = {
-    type: "add",
-    payload: {
-      id: "12345",
-      user: "hola mundo",
-      phone_number: "222222"
-    }
-  };
+const FormularioAdd = ({ state, dispatch }) => {
 
   const handleAdd = () => {
-      dispatch(actionAdd);
-      console.log(estado)
+      // dispatch(actionAdd);
   };
 
   return (
