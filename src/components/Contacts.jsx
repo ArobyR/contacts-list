@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { ContactsReducer } from "../reducers/ContactsReducers";
 import FormularioAdd from "./FormularioAdd";
 import TableContacts from "./TableContacts";
@@ -10,6 +10,7 @@ const init = () => {
 
 const Contacts = () => {
   const [state, dispatch] = useReducer(ContactsReducer, [], init);
+  const [formView, setFormView] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(state));
@@ -17,12 +18,16 @@ const Contacts = () => {
 
   return (
     <div className="container mt-3">
-      <FormularioAdd estado={state} dispatch={dispatch} />
+      <button
+        onClick={() => setFormView(!formView)}
+        className={formView ? "btn btn-danger" : "btn btn-success"}
+      >
+        {formView ? "Close" : "Add contact"}
+      </button>
+      {formView && <FormularioAdd estado={state} dispatch={dispatch} />}
       <TableContacts contacts={state} dispatch={dispatch} />
     </div>
   );
 };
 
-export default Contacts;
-
-// utilizar memo
+export default React.memo(Contacts);

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 
-const FormularioAdd = ({ dispatch }) => {
-  const [data, setData] = useState({ user_name: "", phone_number: "" });
+const initialValueForm = { user_name: "", phone_number: "" }
+
+const FormularioAdd = ({ dispatch }) => {  
+  const [data, setData] = useState(initialValueForm);
   const { user_name, phone_number } = data;
 
   const handleChange = (e) => {
@@ -22,11 +24,12 @@ const FormularioAdd = ({ dispatch }) => {
   };
   const handleAdd = () => {
     dispatch(actionAdd);
+    setData(initialValueForm)
   };
 
   return (
-    <div className="container">
-      <label className="mx-1 d-grid gap-2">
+    <div className="container mt-3">
+      <label className="m-1 d-grid gap-2">
         Name:{" "}
         <input
           onChange={handleChange}
@@ -37,7 +40,7 @@ const FormularioAdd = ({ dispatch }) => {
           autoComplete="off"
         />
       </label>
-      <label className="mx-1 d-grid gap-2">
+      <label className="m-1 d-grid gap-2">
         Phone number:{" "}
         <input
           onChange={handleChange}
@@ -49,7 +52,7 @@ const FormularioAdd = ({ dispatch }) => {
         />
       </label>
       <div className="mx-1 d-grid gap-2">
-        <button onClick={handleAdd} className="btn btn-info mt-2">
+        <button onClick={handleAdd} className="btn btn-primary mt-2">
           Agregar
         </button>
       </div>
