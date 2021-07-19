@@ -20,13 +20,13 @@ const TableContacts = ({ contacts = [], dispatch }) => {
         </tr>
       </thead>
       <tbody>
-        {contacts.map((conctact) => (
-          <tr key={conctact.id}>
-            <th>{conctact.id.split("-")[0]}</th>
-            <td>{conctact.user_name}</td>
-            <td>{conctact.phone_number}</td>
+        {contacts.map((contact) => (
+          <tr key={contact.id}>
+            <th>{contact.id.split("-")[0]}</th>
+            <td>{contact.user_name}</td>
+            <td>{contact.phone_number}</td>
             <td>
-              <button className="btn btn-danger" onClick={() => handleDelete(conctact.id)}>
+              <button className="btn btn-danger" onClick={() => handleDelete(contact.id)}>
                 Delete
               </button>
             </td>
