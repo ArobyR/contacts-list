@@ -7,12 +7,12 @@ const Contacts = () => {
   const contacts = [
     {
       id: "gf22",
-      user: "jimena",
+      user_name: "jimena",
       phone_number: "84849849849",
     },
     {
       id: "gf21",
-      user: "pepa",
+      user_name: "pepa",
       phone_number: "8484f984984",
     },
   ];
@@ -22,7 +22,7 @@ const Contacts = () => {
   return (
     <div className="container mt-3">
       <FormularioAdd estado={state} dispatch={dispatch} />
-      <TableContacts contacts={state} />
+      <TableContacts contacts={state} dispatch={dispatch} />
     </div>
   );
 };
