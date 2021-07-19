@@ -1,23 +1,19 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { ContactsReducer } from "../reducers/ContactsReducers";
 import FormularioAdd from "./FormularioAdd";
 import TableContacts from "./TableContacts";
 
+const init = () => {
+  const conctacts = localStorage.getItem("contacts");
+  return conctacts ? JSON.parse(conctacts) : [];
+};
+
 const Contacts = () => {
-  const contacts = [
-    {
-      id: "gf22",
-      user_name: "jimena",
-      phone_number: "84849849849",
-    },
-    {
-      id: "gf21",
-      user_name: "pepa",
-      phone_number: "8484f984984",
-    },
-  ];
-  const [state, dispatch] = useReducer(ContactsReducer, contacts);
-  console.log(state);
+  const [state, dispatch] = useReducer(ContactsReducer, [], init);
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(state));
+  }, [state]);
 
   return (
     <div className="container mt-3">
@@ -28,3 +24,5 @@ const Contacts = () => {
 };
 
 export default Contacts;
+
+// utilizar memo
