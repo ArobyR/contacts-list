@@ -24,7 +24,7 @@ const Contacts = () => {
       >
         {formView ? "Close" : "Add contact"}
       </button>
-      {formView && <FormularioAdd estado={state} dispatch={dispatch} />}
+      {formView && <FormularioAdd dispatch={dispatch} />}
       <TableContacts contacts={state} dispatch={dispatch} />
     </div>
   );
